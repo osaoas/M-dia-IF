@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+</head>
+
+<body>
+	<h1 id="textMode">Calcular Média</h1>
+	<span id="info" class="material-symbols-outlined">
+		info
+	</span>
+
+	<div id="fundModal">
+		<div id="modal">
+
+			<h1>Avisos!</h1>
+			<p>Importante: a funcionalidade de selecionar o número de avaliações ainda não foi concluída, portanto, ela só está disponível no modo "Calcular Média".</p>
+			<hr class="line">
+			<h1>Como usar?</h1>
+			<h2>Modo Calcular Média:</h2>
+			<p>Este modo é bastante simples. Basta inserir a soma das suas notas da N1 e da N2. Ao clicar em calcular, o sistema fornecerá sua média, juntamente com informações como "Passou!", "Reprovou" e "Prova Final".</p>
+			<h3>Dica de uso:</h3>
+			<p>Para verificar sua média, some os valores das notas que você possui. Por exemplo, se tiver 2 provas da N1 e apenas uma da N2, inserindo a soma das notas da N1 com a nota da N2, você obterá sua média.</p>
+			<h2>Modo Preciso Tirar:</h2>
+			<p>Neste modo, você adiciona cada nota individualmente, e o sistema retorna a pontuação necessária na última avaliação.</p>
+			<h3>Dica de uso:</h3>
+			<p>Deixe como zero as notas que você não souber. Isso ajudará a visualizar quantos pontos são necessários no total.</p>
+			<p>Exemplo: tenho as todas as notas da N1 e nenhuma da N2, deixando as da N2 como 0 você receberá quantos pontos precisa na N2</p>
+			<hr class="line">
+			<p>Projeto desenvolvido integralmente por Ednaldo Pereira.</p>
+		</div>
+	</div>
+
+	<div id="Sbox">
+
+		<input name="modo" type="radio" id="mud" class="modes" checked>
+		<label for="mud" class="label-mode"></label>
+
+		<input name="modo" type="radio" id="mud2" class="modes">
+		<label for="mud2" class="label-mode"></label>
+
+		<input name="modo" type="radio" id="mud3" class="modes">
+		<label for="mud3" class="label-mode"></label>
+		<input type="checkbox" id="btn">
+		<label for="btn">
+			<span class="material-symbols-outlined">
+				light_mode
+			</span>
+
+		</label>
+		<div class="box" id="selectAv">
+
+			<label for="numAvaliacoesN1">Número de Avaliações n1</label>
+			<select id="numAvaliacoesN1" class="ipt-nav ipn">
+				<option value="2">2 Avaliações</option>
+				<option value="3">3 Avaliações</option>
+				<option value="4">4 Avaliações</option>
+			</select>
+			<label for="numAvaliacoesN2">Número de Avaliações n2</label>
+			<select id="numAvaliacoesN2" class="ipt-nav ipn">
+				<option value="2">2 Avaliações</option>
+				<option value="3">3 Avaliações</option>
+				<option value="4">4 Avaliações</option>
+			</select>
+		</div>
+
+		<div class="box" id="calcmedia">
+			<div class="input">
+				<input type="text" inputmode="numeric" id="soman1" class="ipn" required>
+				<label class="label" for="soman1">Soma n1</label>
+
+			</div>
+			<div class="input">
+				<input type="text" inputmode="numeric" id="soman2" class="ipn" required>
+				<label class="label" for="soman2">Soma n2</label>
+
+			</div>
+			<input type="submit" class="btn" value="Media" id="btnMed">
+			<input class="btn" type="button" value="Limpar" id="limpar1">
+			<p id="media"></p>
+
+		</div>
+		<div class="box" id="calcPR">
+			<div class="input">
+				<input type="text" inputmode="numeric" id="n1p1" class="ipn" required>
+				<label class="label" for="n1p1">Nota n1.1</label>
+			</div>
+
+			<div class="input">
+				<input type="text" inputmode="numeric" id="n1p2" class="ipn" required>
+				<label class="label" for="n1p2">Nota n1.2</label>
+			</div>
+
+			<div class="input">
+				<input type="text" inputmode="numeric" id="n2p1" class="ipn" required>
+				<label class="label" for="n2p1">Nota n2.1</label>
+			</div>
+
+			<input type="submit" class="btn" value="PR" id="btnPR">
+			<input class="btn" type="button" value="Limpar" id="limpar2">
+			<p id="pr"></p>
+		</div>
+
+	</div>
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,353 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.5s;
+  color: var(--colorF);
+}
+
+body {
+  --color1: #efefef;
+  --color2: #e0e0e0;
+  --color3: #b3b3b3;
+  --color4: #fff;
+  --color5: #cacaca;
+  --color6: #898989;
+  --colorF: #201e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--color1);
+  font-family: "Poppins", sans-serif;
+}
+body.dark {
+  --color1: #302c2c;
+  --color2: #201e1e;
+  --color3: #121111;
+  --color4: #0a0a0a;
+  --color5: #121212;
+  --color6: #000;
+  --colorF: #aaaaaa;
+}
+
+#textMode {
+  position: fixed;
+  top: 50px;
+}
+
+#info {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#fundModal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+#fundModal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+#fundModal #modal {
+  width: 80vw;
+  max-width: 1000px;
+  max-height: 80vw;
+  background: var(--color2);
+  border-radius: 30px;
+  box-shadow: 0 0 20px #111;
+  padding: 40px;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 20px solid var(--color2);
+}
+#fundModal #modal::-webkit-scrollbar {
+  width: 10px;
+  background: var(--colorF);
+  border-radius: 30px;
+}
+#fundModal #modal::-webkit-scrollbar-thumb {
+  background: var(--color3);
+  border-radius: 30px;
+}
+#fundModal #modal .line {
+  width: 100%;
+  height: 4px;
+  margin: 1px;
+  background: var(--colorF);
+}
+#fundModal #modal h2 {
+  position: relative;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+#fundModal #modal h2:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--colorF);
+  position: absolute;
+  left: -15px;
+}
+#fundModal #modal h3 {
+  position: relative;
+  left: 25px;
+}
+#fundModal #modal p {
+  margin-left: 35px;
+  word-wrap: break-word;
+}
+
+#Sbox {
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  background: var(--color1);
+  outline: 3px solid var(--color3);
+  box-shadow: 50px 50px 100px var(--color5), -50px -50px 100px var(--color3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  position: relative;
+}
+#Sbox #calcPR {
+  opacity: 0;
+  pointer-events: none;
+  margin-top: -100px;
+}
+#Sbox #selectAv {
+  opacity: 0;
+  pointer-events: none;
+  margin-right: -100px;
+}
+#Sbox .modes {
+  display: none;
+}
+#Sbox .modes:checked + .label-mode:before {
+  background: var(--colorF);
+  box-shadow: 5px 5px 10px var(--color6), -5px -5px 10px var(--color3);
+}
+#Sbox .modes#mud:checked ~ #textMode {
+  position: fixed;
+  top: 50px;
+}
+#Sbox .modes#mud:checked ~ #textMode:before {
+  content: "Calcular Média";
+}
+#Sbox .modes#mud:checked ~ #calcmedia {
+  opacity: 1;
+  margin: 10px;
+  pointer-events: auto;
+}
+#Sbox .modes#mud:checked ~ #calcPR {
+  opacity: 0;
+  margin-top: -100px;
+  pointer-events: none;
+}
+#Sbox .modes#mud:checked ~ #selectAv {
+  opacity: 0;
+  margin-right: -100px;
+  pointer-events: none;
+}
+#Sbox .modes#mud2:checked ~ #calcmedia {
+  opacity: 0;
+  margin-right: 100px;
+  pointer-events: none;
+}
+#Sbox .modes#mud2:checked ~ #selectAv {
+  opacity: 0;
+  margin-right: -100px;
+  pointer-events: none;
+}
+#Sbox .modes#mud2:checked ~ #calcPR {
+  opacity: 1;
+  margin: 10px;
+  pointer-events: auto;
+}
+#Sbox .modes#mud2:checked ~ .box {
+  margin-top: 50px;
+  gap: 15px;
+}
+#Sbox .modes#mud3:checked ~ #calcmedia {
+  opacity: 0;
+  margin-right: 100px;
+  pointer-events: none;
+}
+#Sbox .modes#mud3:checked ~ #selectAv {
+  opacity: 1;
+  margin: 10px;
+  pointer-events: auto;
+}
+#Sbox .modes#mud3:checked ~ #calcPR {
+  opacity: 0;
+  margin-top: -100px;
+  pointer-events: none;
+}
+#Sbox .label-mode {
+  top: -150px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color4);
+  box-shadow: 5px 5px 10px var(--color6), -5px -5px 10px var(--color3);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 3;
+}
+#Sbox .label-mode:before {
+  content: "";
+  position: absolute;
+  background: var(--color3);
+  box-shadow: inset 5px 5px 10px var(--color4), inset -5px -5px 10px var(--color3);
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  left: 12.5%;
+  top: 12.5%;
+}
+#Sbox .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  margin: 20px;
+  position: absolute;
+}
+#Sbox .box .ipn {
+  width: 100%;
+  height: 30px;
+  border: none;
+  outline: 2px solid var(--color3);
+  padding-left: 20px;
+  border-radius: 7px;
+  background: var(--color1);
+  box-shadow: inset 10px 10px 25px var(--color2), inset -10px -10px 29px var(--color3);
+}
+#Sbox .box .ipn:focus-visible, #Sbox .box .ipn:valid {
+  border-radius: 7px;
+  background: var(--color1);
+  box-shadow: 6px 6px 29px var(--color6), -6px -6px 29px var(--color3);
+}
+#Sbox .box .ipn:focus-visible ~ .label, #Sbox .box .ipn:valid ~ .label {
+  transform: translate(10px, -20px) scale(0.8);
+}
+#Sbox .box .input {
+  width: 100%;
+  position: relative;
+}
+#Sbox .box .label {
+  transition: 0.6s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(20px, 3px);
+  transform-origin: left;
+  transition: transform 0.25s;
+}
+#Sbox .box .btn {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(145deg, var(--color1), var(--color3));
+  box-shadow: 0 0 2px var(--color4);
+  cursor: pointer;
+}
+#Sbox .box .btn:hover {
+  box-shadow: 8px 8px 29px var(--color2), -8px -8px 29px var(--color3);
+}
+#Sbox .box .btn:active {
+  background: var(--color1);
+  box-shadow: inset 8px 8px 29px var(--color2), inset -8px -8px 29px var(--color3);
+}
+
+#btn {
+  display: none;
+}
+#btn:checked ~ label[for=btn] span {
+  left: 27px;
+  transform: rotate(360deg);
+  color: var(--colorF);
+}
+
+label[for=btn] {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: 50px;
+  height: 10px;
+  border-radius: 10px;
+  background: var(--color2);
+  box-shadow: inset 6px 6px 10px var(--color3), inset -6px -6px 10px var(--color4), 10px 10px 25px var(--color3), -10px -10px 25px var(--color2);
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  z-index: 3;
+  cursor: pointer;
+}
+label[for=btn] span {
+  transform: rotate(180deg);
+  transition: all 0.5s cubic-bezier(0.9, 0.24, 0.72, 0.53);
+  position: absolute;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  border-radius: 50%;
+  border-radius: 50%;
+  background: var(--color5);
+  box-shadow: 3px 3px 6px var(--color6), -3px -3px 6px var(--color4);
+  color: var(--colorF);
+}
+
+@media only screen and (max-width: 767px) {
+  #Sbox {
+    width: 80%;
+    height: 50%;
+    margin-bottom: 100px;
+  }
+  #Sbox label[for=btn] {
+    transform: scale(1.6);
+    right: 20px;
+  }
+  #Sbox .label-mode {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  #Sbox .box {
+    width: 100%;
+    padding: 40px;
+  }
+}/*# sourceMappingURL=styles.css.map */
