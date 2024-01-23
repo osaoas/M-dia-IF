@@ -28,16 +28,16 @@ iptAvn2.addEventListener("input", () => {
 });
 
 btnMedia.addEventListener("click", () => {
-	let med = calcmedia().toFixed(2);
+	let med = calcmedia().toFixed(1);
 	if (!isNaN(med)) {
 		respostaMedia.textContent = `Sua média é: ${med}`;
 		if (med >= 6) {
-			respostaMedia.textContent += " Passou!";
+			respostaMedia.textContent += ", Passou!";
 		}
-		if (med < 6 && med > 3) {
-			respostaMedia.textContent += " Prova Final";
-		} else {
-			respostaMedia.textContent += "Reprovou";
+		if (med < 6 && med >= 3) {
+			respostaMedia.textContent += ", Prova Final";
+		} else if (med < 3) {
+			respostaMedia.textContent += ", Reprovou";
 		}
 	} else {
 		respostaMedia.textContent = `Valores Inválidos`;
@@ -73,8 +73,12 @@ function calcPr() {
 	return (PR * 10) / 3;
 }
 btnPr.addEventListener("click", () => {
-	let med = calcPr().toFixed(2);
+	let med = calcPr().toFixed(1);
 	if (!isNaN(med)) {
+		if (med <= 0) {
+			respostaPr.textContent = `Você passou com: ${med * -1} pontos de vantagem`;
+			return;
+		}
 		respostaPr.textContent = `Você precisa tirar: ${med}`;
 	} else {
 		respostaPr.textContent = `Valor Digitado Inválido!`;
