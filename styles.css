@@ -25,6 +25,8 @@ body {
   width: 100vw;
   background: var(--color1);
   font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 body.dark {
   --color1: #302c2c;
@@ -37,8 +39,8 @@ body.dark {
 }
 
 #textMode {
-  position: fixed;
-  top: 50px;
+  position: relative;
+  top: -50px;
 }
 
 #info {
@@ -295,9 +297,7 @@ body.dark {
 }
 
 label[for=btn] {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   width: 50px;
   height: 10px;
   border-radius: 10px;
@@ -331,23 +331,24 @@ label[for=btn] span {
   color: var(--colorF);
 }
 
-@media only screen and (max-width: 2080px) {
+@media only screen and (max-width: 767px) {
+  #textMode {
+    top: -60px;
+  }
+
   #Sbox {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 100px;
+    margin-bottom: -100px;
+    transform: scale(1.5);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
   }
   #Sbox label[for=btn] {
-    transform: scale(2);
-    right: 70px;
-  }
-  #Sbox .label-mode {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    right: 35px;
   }
   #Sbox .box {
-    width: 100%;
-    padding: 30px;
+    border: none;
+    box-shadow: none;
   }
-}/*# sourceMappingURL=styles.css.map */
+}
