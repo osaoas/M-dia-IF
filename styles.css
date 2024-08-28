@@ -331,7 +331,7 @@ label[for=btn] span {
   color: var(--colorF);
 }
 
-@media only screen and (max-width: 2160px) {
+@media only screen and (max-width: 3000px) {
   #textMode {
     top: -60px;
   }
